@@ -3,7 +3,8 @@ export default {
     plugins: [
         ['umi-plugin-react', {
             // 针对插件的一些定制
-            antd: true
+            antd: true,
+            dva:true,
         }]
     ],
     routes: [
@@ -12,9 +13,21 @@ export default {
             component: '../layout',
             routes: [
                 {
+                    path: '/',
+                    component: 'HelloWorld'  //是相对于 page 目录的相对路径
+                },
+                {
                     path: 'helloworld',
-                    component: './HelloWorld'  //是相对于 page 目录的相对路径
-                }
+                    component: 'HelloWorld'  //是相对于 page 目录的相对路径
+                },
+                {
+                    path: '/dashboard',
+                    routes: [
+                        { path: '/dashboard/analysis', component: 'Dashboard/Analysis' },
+                        { path: '/dashboard/monitor', component: 'Dashboard/Monitor' },
+                        { path: '/dashboard/workplace', component: 'Dashboard/Workplace' }
+                    ]
+                },
             ]
         }
 
